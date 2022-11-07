@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import Nav from './components/Nav';
 import Main from './components/Main';
+import Details from './components/Detail';
 import Form from './components/Form';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -15,7 +16,8 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/form" element={<Form />} />
+        <Route path="/details" element={<Details />} />
+        <Route path="/new-hackathon" element={<Form />} />
       </Routes>
       <ToastContainer />
     </>

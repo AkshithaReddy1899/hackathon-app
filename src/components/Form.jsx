@@ -11,6 +11,10 @@ const date = new Date().toISOString().slice(0, 10);
         console.log(values.start_date < date);
 */
 
+// TO DO
+
+// Create id for every hackathon
+
 const Form = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
