@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import { addNewHackathon } from '../feature/DataSlice';
 
 /*
@@ -18,20 +19,38 @@ const date = new Date().toISOString().slice(0, 10);
 const Form = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [imageUrl, setImageUrl] = useState('https://i.ibb.co/7r5yL5y/773900d05332.png');
   const fieldEmpty = () => toast('Please fill in all the fields');
   const inputDateError = () => toast('Please check your dates again.');
 
   const initialValues = {
+    id: uuidv4(),
     name: '',
     start_date: '',
     end_date: '',
     description: '',
-    image: imageUrl,
+    image: 'https://i.ibb.co/7r5yL5y/773900d05332.png',
     level: 'Easy',
   };
 
   const [values, setValues] = useState(initialValues);
+
+  const handleImage = (e) => {
+    e.preventDefault();
+    const file = e.target.files[0];
+    const rf = new FileReader();
+    rf.readAsDataURL(file);
+    rf.onloadend = (event) => {
+      const body = new FormData();
+      body.append('image', event.target.result.split(',').pop());
+      body.append('name', file);
+      fetch('https://api.imgbb.com/1/upload?key=0935e90046a4fd2dd29c82758cd22b7a', {
+        method: 'POST',
+        body,
+      })
+        .then((res) => res.json())
+        .then((data) => data.data.image.url);
+    };
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -48,26 +67,6 @@ const Form = () => {
     } else {
       fieldEmpty();
     }
-  };
-
-  const handleImage = (e) => {
-    e.preventDefault();
-    const file = e.target.files[0];
-    const rf = new FileReader();
-    rf.readAsDataURL(file);
-    rf.onloadend = (event) => {
-      const body = new FormData();
-      body.append('image', event.target.result.split(',').pop());
-      body.append('name', file);
-      fetch('https://api.imgbb.com/1/upload?key=0935e90046a4fd2dd29c82758cd22b7a', {
-        method: 'POST',
-        body,
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setImageUrl(data.data.image.url);
-        });
-    };
   };
 
   const handleValues = (e) => {
