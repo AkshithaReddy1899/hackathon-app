@@ -4,16 +4,13 @@ import Features from './Features';
 import Filter from './Filter';
 import List from './List';
 
-const Main = () => {
-  console.log('Main');
-  return (
-    <>
-      <Hero />
-      <Features />
-      <Filter />
-      <List />
-    </>
-  );
-};
+const Main = () => (
+  <>
+    <Hero />
+    <Features />
+    <Filter />
+    <List />
+  </>
+);
 
 export default Main;

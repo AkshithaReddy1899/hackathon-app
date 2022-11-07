@@ -9,7 +9,6 @@ import levelBasic from '../assets/icons/levelBasic.svg';
 const Details = () => {
   const location = useLocation();
   const { hackathon } = location.state;
-  console.log(hackathon);
   return (
     <>
       <div className="bg-[#003145] text-white px-8 md:px-36 md:py-16">
