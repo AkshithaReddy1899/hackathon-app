@@ -5,13 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addNewHackathon, updateHackathon } from '../feature/DataSlice';
 
-/*
-const date = new Date().toISOString().slice(0, 10);
-        console.log(date);
-        console.log(values.start_date);
-        console.log(values.start_date < date);
-*/
-
 const Form = ({ data }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -51,8 +44,6 @@ const Form = ({ data }) => {
       if (values.start_date <= values.end_date) {
         values.image = imageUrl;
         const itemExists = state.some(({ id }) => id === values.id);
-        // values.start_date += ':00.859Z';
-        // values.end_date += ':00.859Z';
         if (!itemExists) {
           dispatch(addNewHackathon(values));
         } else {
@@ -163,7 +154,7 @@ const Form = ({ data }) => {
         <div className="flex items-center justify-between">
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={(e) => handleSubmit(e)}
           >
             Submit

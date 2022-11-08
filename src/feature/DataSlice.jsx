@@ -49,9 +49,14 @@ export const dataSlice = createSlice({
         },
       },
     }),
+    deleteHackathon: (state, action) => ({
+      myChallenges: [
+        ...state.myChallenges.filter((item) => item.id !== action.payload),
+      ],
+    }),
   },
 });
 
-export const { addNewHackathon, updateHackathon } = dataSlice.actions;
+export const { addNewHackathon, updateHackathon, deleteHackathon } = dataSlice.actions;
 
 export default dataSlice.reducer;

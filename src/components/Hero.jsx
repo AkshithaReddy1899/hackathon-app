@@ -12,7 +12,7 @@ const Hero = () => (
         <div className="my-12 w-full md:1/2 md:my-20 pr-24">
           <p className="text-4xl text-white md:text-5xl my-6 border-solid border-0 border-l-[8px] px-12 border-yellow-500 font-semibold leading-10">Accelerate Innovation with Global AI Challenges</p>
           <p className="py-8 px-16 leading-7 text-lg font-medium">AI Challenges at DPhi simulate real-world problems. It is a great place to put your AI/Data Science skills to test on diverse datasets allowing you to foster learning through competitions.</p>
-          <Link to="/new-hackathon" className="bg-white p-2 border rounded-md text-slate-600 mx-16">Create Challenge</Link>
+          <Link to="/new-hackathon" className="bg-white p-2 border rounded-md text-slate-900 font-semibold mx-16">Create Challenge</Link>
         </div>
         <div className="w-full md:w-1/2">
           <img src={rocket} alt="rocket" />

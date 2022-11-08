@@ -1,10 +1,21 @@
 import React from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import levelBasic from '../assets/icons/levelBasic.svg';
+import { deleteHackathon } from '../feature/DataSlice';
 
 const Details = () => {
   const location = useLocation();
   const { hackathon } = location.state;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleDelete = (e, id) => {
+    e.preventDefault();
+    dispatch(deleteHackathon(id));
+    navigate('/');
+  };
+
   return (
     <>
       <div className="bg-[#003145] text-white px-8 md:px-36 md:py-16">
@@ -33,7 +44,7 @@ const Details = () => {
             <Link to="/update-hackathon" className="text-white cursor-pointer" state={{ item: hackathon.item }}>Edit</Link>
           </div>
           <div className="w-24 border-2 border-red-600 font-bold text-center p-1 text-red-600 rounded-lg">
-            <Link to="/details" state={{ id: hackathon.item.name }}>Delete</Link>
+            <button type="button" onClick={(e) => { handleDelete(e, hackathon.item.id); }}>Delete</button>
           </div>
         </div>
       </div>

@@ -48,6 +48,15 @@ const List = () => {
     }
   };
 
+  const handleSearch = (e) => {
+    const searchedName = HackathonsArr.filter((item) => item.name.toLowerCase().includes(e.target.value.toLowerCase()));
+    if (searchedName.length >= 1) {
+      setSortedHackathons(searchedName);
+    } else {
+      setSortedHackathons(hackathons);
+    }
+  };
+
   const StartsIn = (startDate) => {
     const { date } = startDate;
     return (
@@ -116,7 +125,12 @@ const List = () => {
       <div className="bg-[#002A3B] text-white px-8 md:px-36 md:py-8 text-center">
         <h1 className="py-10 text-2xl font-bold">Explore Challenges</h1>
         <div className="flex flex-col justify-center items-center">
-          <input type="text" className="" />
+          <input
+            type="text"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            onChange={(e) => handleSearch(e)}
+            placeholder="search"
+          />
           <Multiselect
             className="bg-white w-full border text-black rounded-md m-2"
             displayValue="key"
