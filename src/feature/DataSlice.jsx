@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import update from 'react-addons-update';
 
 export const dataSlice = createSlice({
   name: 'Hackathons',
@@ -29,9 +30,16 @@ export const dataSlice = createSlice({
       myChallenges.push(action.payload);
       return { ...state, myChallenges: [...state.myChallenges, action.payload] };
     },
+    updateHackathon: (state, action) => update(state, {
+      myChallenges: {
+        [action.payload.id]: {
+          $set: action.payload,
+        },
+      },
+    }),
   },
 });
 
-export const { addNewHackathon } = dataSlice.actions;
+export const { addNewHackathon, updateHackathon } = dataSlice.actions;
 
 export default dataSlice.reducer;

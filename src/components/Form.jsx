@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { addNewHackathon } from '../feature/DataSlice';
+import { addNewHackathon, updateHackathon } from '../feature/DataSlice';
 
 /*
 const date = new Date().toISOString().slice(0, 10);
@@ -20,6 +20,7 @@ const Form = ({ data }) => {
 
   const [values, setValues] = useState(data);
   const [imageUrl, SetImageUrl] = useState('https://i.ibb.co/7r5yL5y/773900d05332.png');
+  const state = useSelector((state) => state.dataReducer.myChallenges);
 
   const handleImage = (e) => {
     e.preventDefault();
@@ -49,7 +50,12 @@ const Form = ({ data }) => {
     if (!isEmpty) {
       if (values.start_date <= values.end_date) {
         values.image = imageUrl;
-        dispatch(addNewHackathon(values));
+        const itemExists = state.some(({ id }) => id === values.id);
+        if (!itemExists) {
+          dispatch(addNewHackathon(values));
+        } else {
+          dispatch(updateHackathon(values));
+        }
         navigate('/');
       } else {
         inputDateError();
@@ -80,6 +86,7 @@ const Form = ({ data }) => {
               name="name"
               type="text"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              value={values.name}
               onChange={(e) => handleValues(e)}
             />
           </label>

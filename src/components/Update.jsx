@@ -1,12 +1,13 @@
-/* eslint-disable no-console */
 import React from 'react';
+import { useLocation } from 'react-router-dom';
+import Form from './Form';
 
-const Update = (item) => {
-  console.log('Main');
-  console.log(item);
+const Update = () => {
+  const location = useLocation();
+  const { item } = location.state;
   return (
     <div>
-      Update
+      <Form data={item} />
     </div>
   );
 };
