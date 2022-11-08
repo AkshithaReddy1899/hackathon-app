@@ -51,6 +51,8 @@ const Form = ({ data }) => {
       if (values.start_date <= values.end_date) {
         values.image = imageUrl;
         const itemExists = state.some(({ id }) => id === values.id);
+        // values.start_date += ':00.859Z';
+        // values.end_date += ':00.859Z';
         if (!itemExists) {
           dispatch(addNewHackathon(values));
         } else {
@@ -96,7 +98,7 @@ const Form = ({ data }) => {
             <span className="text-gray-600 text-sm font-bold">Start Date</span>
             <input
               name="start_date"
-              type="date"
+              type="datetime-local"
               className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               value={values.start_date}
               onChange={(e) => handleValues(e)}
@@ -108,7 +110,7 @@ const Form = ({ data }) => {
             <span className="text-gray-600 text-sm font-bold">End Date</span>
             <input
               name="end_date"
-              type="date"
+              type="datetime-local"
               className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               value={values.end_date}
               onChange={(e) => handleValues(e)}
