@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const List = () => {
   const hackathons = useSelector((state) => state.dataReducer.myChallenges);
   return (
-    <div className="bg-[#003145] px-8 md:px-36 md:py-16 flex flex-col justify-center items-center md:flex-row">
+    <div className="bg-[#003145] px-8 md:px-36 md:py-16 flex flex-col flex-wrap justify-center items-center md:flex-row">
       {hackathons.map((item) => (
         <div className="block w-72 h-96 m-5 rounded-lg" key={item.name}>
           <div className="">

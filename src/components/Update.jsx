@@ -1,8 +1,22 @@
-/* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+/* eslint-disable no-console */
+import React from 'react';
+
+const Update = (item) => {
+  console.log('Main');
+  console.log(item);
+  return (
+    <div>
+      Update
+    </div>
+  );
+};
+
+export default Update;
+
+/* import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { addNewHackathon } from '../feature/DataSlice';
 
 /*
@@ -10,16 +24,23 @@ const date = new Date().toISOString().slice(0, 10);
         console.log(date);
         console.log(values.start_date);
         console.log(values.start_date < date);
-*/
 
-const Form = ({ data }) => {
+// TO DO
+
+// Create id for every hackathon
+
+const Update = () => {
+  const location = useLocation();
+  const { item } = location.state;
+
+  console.log(item);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const fieldEmpty = () => toast('Please fill in all the fields');
   const inputDateError = () => toast('Please check your dates again.');
 
-  const [values, setValues] = useState(data);
-  const [imageUrl, SetImageUrl] = useState('https://i.ibb.co/7r5yL5y/773900d05332.png');
+  const [values, setValues] = useState(item);
 
   const handleImage = (e) => {
     e.preventDefault();
@@ -35,9 +56,7 @@ const Form = ({ data }) => {
         body,
       })
         .then((res) => res.json())
-        .then((data) => {
-          SetImageUrl(data.data.image.url);
-        });
+        .then((data) => data.data.image.url);
     };
   };
 
@@ -48,7 +67,6 @@ const Form = ({ data }) => {
 
     if (!isEmpty) {
       if (values.start_date <= values.end_date) {
-        values.image = imageUrl;
         dispatch(addNewHackathon(values));
         navigate('/');
       } else {
@@ -80,6 +98,7 @@ const Form = ({ data }) => {
               name="name"
               type="text"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              value={values.name}
               onChange={(e) => handleValues(e)}
             />
           </label>
@@ -165,4 +184,5 @@ const Form = ({ data }) => {
   );
 };
 
-export default Form;
+export default Update;
+*/
