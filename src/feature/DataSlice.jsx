@@ -13,6 +13,7 @@ export const dataSlice = createSlice({
         name: 'Data Sprint 72 - Butterfly Identification',
         level: 'Easy',
         image: 'https://i.ibb.co/7r5yL5y/773900d05332.png',
+        status: '..',
       },
       {
         id: 1,
@@ -22,6 +23,7 @@ export const dataSlice = createSlice({
         name: 'Data Sprint 71 - Weather Recognition',
         level: 'Easy',
         image: 'https://i.ibb.co/7r5yL5y/773900d05332.png',
+        status: '..',
       },
       {
         id: 2,
@@ -31,6 +33,7 @@ export const dataSlice = createSlice({
         name: 'Data Science Bootcamp - Graded Datathon',
         level: 'Easy',
         image: 'https://i.ibb.co/7r5yL5y/773900d05332.png',
+        status: '..',
       }],
   },
   reducers: {

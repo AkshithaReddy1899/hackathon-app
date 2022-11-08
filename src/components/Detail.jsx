@@ -2,10 +2,6 @@ import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import levelBasic from '../assets/icons/levelBasic.svg';
 
-// To do
-
-// Time
-
 const Details = () => {
   const location = useLocation();
   const { hackathon } = location.state;

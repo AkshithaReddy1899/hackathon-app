@@ -11,6 +11,7 @@ const Create = () => {
     description: '',
     image: 'https://i.ibb.co/7r5yL5y/773900d05332.png',
     level: 'Easy',
+    status: '..',
   };
 
   return (
